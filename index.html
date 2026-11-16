@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Урок 4: Розв’язування задач • Фізика 8 клас</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Roboto+Mono:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- KaTeX для відображення математичних та фізичних формул -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f1f5f9;
+            color: #0f172a;
+        }
+        .font-mono {
+            font-family: 'Roboto Mono', monospace;
+        }
+        .physics-card {
+            background: #ffffff;
+            border: 2px solid #cbd5e1;
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
+        }
+        .btn-nav {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-nav:hover:not(:disabled) {
+            transform: translateY(-2px);
+        }
+        .btn-nav:active:not(:disabled) {
+            transform: translateY(0);
+        }
+        
+        /* Зручний скролінг */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e2e8f0; 
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8; 
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b; 
+        }
+
+        /* Стилізація клітинкової сітки зошита */
+        .notebook-area {
+            background-size: 24px 24px;
+            background-image: 
+                linear-gradient(to right, #cbd5e1 1px, transparent 1px),
+                linear-gradient(to bottom, #cbd5e1 1px, transparent 1px);
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body class="min-h-screen h-screen w-screen flex flex-col justify-between p-2 md:p-4 bg-slate-100 overflow-hidden">
+
+    <!-- Верхня панель навігації -->
+    <header class="bg-white border-2 border-slate-300 rounded-2xl px-4 py-3 flex items-center justify-between shrink-0 shadow-sm mb-2 gap-3">
+        <div class="flex items-center gap-3">
+            <div class="border-2 border-slate-800 bg-slate-50 px-3.5 py-1.5 rounded-xl flex flex-col items-center justify-center shrink-0">
+                <span class="text-xs font-black text-slate-800 uppercase tracking-wider leading-none">Урок</span>
+                <span class="text-2xl md:text-3xl font-black text-slate-900 leading-none mt-0.5">4</span>
+            </div>
+            <div>
+                <h1 class="text-xl sm:text-2xl md:text-3xl font-black text-slate-900 tracking-tight leading-snug">
+                    Розв’язування задач
+                </h1>
+                <p class="text-xs sm:text-sm md:text-base font-bold text-slate-500">
+                    Фізика 8 клас • Агрегатні стани речовини. Тепловий баланс
+                </p>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-3 shrink-0">
+            <div class="bg-blue-50 text-blue-900 font-mono font-black text-base md:text-lg px-3.5 py-2 rounded-xl border-2 border-blue-200">
+                Завдання <span id="current-task-num">1–3</span>
+            </div>
+            <!-- Логотип атома як на скріншоті -->
+            <div class="hidden sm:flex w-12 h-12 rounded-xl bg-slate-50 border-2 border-slate-300 items-center justify-center shrink-0">
+                <svg class="w-9 h-9 text-slate-800" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="4">
+                    <circle cx="50" cy="50" r="10" fill="currentColor"/>
+                    <ellipse cx="50" cy="50" rx="42" ry="16" transform="rotate(0 50 50)"/>
+                    <ellipse cx="50" cy="50" rx="42" ry="16" transform="rotate(60 50 50)"/>
+                    <ellipse cx="50" cy="50" rx="42" ry="16" transform="rotate(120 50 50)"/>
+                </svg>
+            </div>
+        </div>
+    </header>
+
+    <!-- Основний контейнер слайдів зі скролінгом -->
+    <main class="grow relative overflow-hidden flex flex-col justify-center">
+
+        <!-- СЛАЙД 1: Завдання 1–3 -->
+        <section id="slide-0" class="slide-page h-full flex flex-col justify-between">
+            <div class="physics-card rounded-3xl p-5 md:p-8 flex-1 flex flex-col border-slate-300 overflow-y-auto space-y-6">
+                
+                <div class="border-b-2 border-slate-200 pb-4 space-y-3">
+                    <div class="flex items-start gap-3 text-xl md:text-2xl font-extrabold text-slate-900">
+                        <span class="bg-slate-800 text-white w-8 h-8 rounded-lg flex items-center justify-center text-lg shrink-0 mt-0.5">1</span>
+                        <p>Налаштуйся на активну роботу на уроці.</p>
+                    </div>
+                    <div class="flex items-start gap-3 text-xl md:text-2xl font-extrabold text-slate-900">
+                        <span class="bg-slate-800 text-white w-8 h-8 rounded-lg flex items-center justify-center text-lg shrink-0 mt-0.5">2</span>
+                        <p>Попрацюй за методикою перевірки домашнього завдання.</p>
+                    </div>
+                    <div class="flex items-start gap-3 text-xl md:text-2xl font-extrabold text-slate-900">
+                        <span class="bg-blue-700 text-white w-8 h-8 rounded-lg flex items-center justify-center text-lg shrink-0 mt-0.5">3</span>
+                        <p>Попрацюй у парі. Дайте відповіді на запитання. Уважно послухайте й доповніть відповіді одне одного.</p>
+                    </div>
+                </div>
+
+                <!-- Список усіх 9 запитань з пункту 3 -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                    <!-- 3.1 -->
+                    <div class="p-4 bg-slate-50 rounded-2xl border-2 border-slate-200 flex flex-col justify-between gap-3">
+                        <p class="text-xl md:text-2xl font-bold text-slate-900">• Що називають пароутворенням?</p>
+                        <div>
+                            <button onclick="toggleHint('q3_1')" class="text-base bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl font-bold transition shadow-sm">
+                                <i class="fa-solid fa-eye mr-1.5"></i> Перевірити відповідь
+                            </button>
+                            <p id="q3_1" class="hidden mt-3 text-lg md:text-xl text-emerald-950 font-bold bg-emerald-100 p-4 rounded-xl border-2 border-emerald-300">
+                                Пароутворенням називають процес переходу речовини з рідкого стану в газоподібний.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 3.2 -->
+                    <div class="p-4 bg-slate-50 rounded-2xl border-2 border-slate-200 flex flex-col justify-between gap-3">
+                        <p class="text-xl md:text-2xl font-bold text-slate-900">• Що називають випаровуванням?</p>
+                        <div>
+                            <button onclick="toggleHint('q3_2')" class="text-base bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl font-bold transition shadow-sm">
+                                <i class="fa-solid fa-eye mr-1.5"></i> Перевірити відповідь
+                            </button>
+                            <p id="q3_2" class="hidden mt-3 text-lg md:text-xl text-emerald-950 font-bold bg-emerald-100 p-4 rounded-xl border-2 border-emerald-300">
+                                Випаровуванням називають процес пароутворення з вільної поверхні рідини (відбувається за будь-якої температури).
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 3.3 -->
+                    <div class="p-4 bg-slate-50 rounded-2xl border-2 border-slate-200 flex flex-col justify-between gap-3">
+                        <p class="text-xl md:text-2xl font-bold text-slate-900">• Що називають кипінням?</p>
+                        <div>
+                            <button onclick="toggleHint('q3_3')" class="text-base bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl font-bold transition shadow-sm">
+                                <i class="fa-solid fa-eye mr-1.5"></i> Перевірити відповідь
+                            </button>
+                            <p id="q3_3" class="hidden mt-3 text-lg md:text-xl text-emerald-950 font-bold bg-emerald-100 p-4 rounded-xl border-2 border-emerald-300">
+                                Кипінням називають процес пароутворення, який відбувається в усьому об’ємі рідини та супроводжується утворенням і зростанням бульбашок пари.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 3.4 -->
+                    <div class="p-4 bg-slate-50 rounded-2xl border-2 border-slate-200 flex flex-col justify-between gap-3">
+                        <p class="text-xl md:text-2xl font-bold text-slate-900">• Що називають температурою кипіння?</p>
+                        <div>
+                            <button onclick="toggleHint('q3_4')" class="text-base bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl font-bold transition shadow-sm">
+                                <i class="fa-solid fa-eye mr-1.5"></i> Перевірити відповідь
+                            </button>
+                            <p id="q3_4" class="hidden mt-3 text-lg md:text-xl text-emerald-950 font-bold bg-emerald-100 p-4 rounded-xl border-2 border-emerald-300">
+                                Температурою кипіння називають температуру, за якої рідина кипить (за незмінного зовнішнього тиску).
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 3.5 -->
+                    <div class="p-4 bg-slate-50 rounded-2xl border-2 border-slate-200 flex flex-col justify-between gap-3">
+                        <p class="text-xl md:text-2xl font-bold text-slate-900">• Що називають питомою теплотою пароутворення речовини?</p>
+                        <div>
+                            <button onclick="toggleHint('q3_5')" class="text-base bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl font-bold transition shadow-sm">
+                                <i class="fa-solid fa-eye mr-1.5"></i> Перевірити відповідь
+                            </button>
+                            <p id="q3_5" class="hidden mt-3 text-lg md:text-xl text-emerald-950 font-bold bg-emerald-100 p-4 rounded-xl border-2 border-emerald-300">
+                                Це фізична величина, що характеризує певну речовину та дорівнює кількості теплоти, яку необхідно передати рідині масою $1\ \text{кг}$, щоб за незмінної температури перетворити її на пару ($[r] = \frac{\text{Дж}}{\text{кг}}$).
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 3.6 -->
+                    <div class="p-4 bg-slate-50 rounded-2xl border-2 border-slate-200 flex flex-col justify-between gap-3">
+                        <p class="text-xl md:text-2xl font-bold text-slate-900">• Як змінюється температура речовини під час кипіння?</p>
+                        <div>
+                            <button onclick="toggleHint('q3_6')" class="text-base bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl font-bold transition shadow-sm">
+                                <i class="fa-solid fa-eye mr-1.5"></i> Перевірити відповідь
+                            </button>
+                            <p id="q3_6" class="hidden mt-3 text-lg md:text-xl text-emerald-950 font-bold bg-emerald-100 p-4 rounded-xl border-2 border-emerald-300">
+                                Під час кипіння температура речовини залишається незмінною (за сталого зовнішнього тиску).
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 3.7 -->
+                    <div class="p-4 bg-slate-50 rounded-2xl border-2 border-slate-200 flex flex-col justify-between gap-3">
+                        <p class="text-xl md:text-2xl font-bold text-slate-900">• Як змінюється внутрішня енергія речовини в процесі конденсації?</p>
+                        <div>
+                            <button onclick="toggleHint('q3_7')" class="text-base bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl font-bold transition shadow-sm">
+                                <i class="fa-solid fa-eye mr-1.5"></i> Перевірити відповідь
+                            </button>
+                            <p id="q3_7" class="hidden mt-3 text-lg md:text-xl text-emerald-950 font-bold bg-emerald-100 p-4 rounded-xl border-2 border-emerald-300">
+                                Внутрішня енергія речовини зменшується, оскільки під час конденсації виділяється кількість теплоти $Q = rm$.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 3.8 -->
+                    <div class="p-4 bg-slate-50 rounded-2xl border-2 border-slate-200 flex flex-col justify-between gap-3">
+                        <p class="text-xl md:text-2xl font-bold text-slate-900">• Питома теплота пароутворення спирту дорівнює $900\ \frac{\text{кДж}}{\text{кг}}$. Що це означає?</p>
+                        <div>
+                            <button onclick="toggleHint('q3_8')" class="text-base bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl font-bold transition shadow-sm">
+                                <i class="fa-solid fa-eye mr-1.5"></i> Перевірити відповідь
+                            </button>
+                            <p id="q3_8" class="hidden mt-3 text-lg md:text-xl text-emerald-950 font-bold bg-emerald-100 p-4 rounded-xl border-2 border-emerald-300">
+                                Це означає, що для перетворення $1\ \text{кг}$ рідкого спирту на пару за температури кипіння ($78\ ^\circ\text{C}$) йому необхідно передати $900\ \text{кДж}$ теплоти.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- 3.9 -->
+                    <div class="lg:col-span-2 p-4 bg-blue-50 rounded-2xl border-2 border-blue-200 flex flex-col justify-between gap-3">
+                        <p class="text-xl md:text-2xl font-bold text-slate-900">• За якою формулою обчислюють кількість теплоти, що необхідно передати рідині для перетворення її на пару за незмінної температури?</p>
+                        <div>
+                            <button onclick="toggleHint('q3_9')" class="text-base bg-blue-700 hover:bg-blue-800 text-white px-4 py-2 rounded-xl font-bold transition shadow-sm">
+                                <i class="fa-solid fa-eye mr-1.5"></i> Перевірити формулу
+                            </button>
+                            <p id="q3_9" class="hidden mt-3 text-xl md:text-2xl text-emerald-950 font-bold bg-emerald-100 p-4 rounded-xl border-2 border-emerald-300">
+                                $$Q = r \cdot m$$ (де $r$ — питома теплота пароутворення, $m$ — маса рідини).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- СЛАЙД 2: Завдання 4 (частина 1: графік A–K та якісні задачі) -->
+        <section id="slide-1" class="slide-page hidden h-full flex flex-col justify-between">
+            <div class="physics-card rounded-3xl p-5 md:p-8 flex-1 flex flex-col border-slate-300 overflow-y-auto space-y-6">
+                
+                <div class="border-b-2 border-slate-200 pb-3">
+                    <h2 class="text-xl md:text-2xl font-black text-slate-900">4. Виконай завдання.</h2>
+                </div>
+
+                <!-- 4.1 Графік A-B-C-D-E-F-G-H-I-J-K -->
+                <div class="bg-slate-50 p-5 rounded-2xl border-2 border-slate-200 space-y-4">
+                    <p class="text-xl md:text-2xl font-bold text-slate-900 leading-relaxed">
+                        ➤ Розглянь графік залежності температури тіла від часу. У початковий момент часу тіло перебувало у твердому стані. Опиши, що відбувається з тілом та як змінюється його внутрішня енергія на кожній ділянці графіка. На яких ділянках речовина перебуває одночасно у двох агрегатних станах?
+                    </p>
+
+                    <!-- Точний SVG графік A-B-C-D-E-F-G-H-I-J-K -->
+                    <div class="bg-white border-2 border-slate-300 rounded-2xl p-4 flex flex-col items-center">
+                        <svg viewBox="0 0 820 270" class="w-full max-w-[800px] h-auto">
+                            <defs>
+                                <marker id="ax-arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                                    <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f172a"/>
+                                </marker>
+                            </defs>
+                            <!-- Осі координат -->
+                            <line x1="70" y1="230" x2="70" y2="20" stroke="#0f172a" stroke-width="2.5" marker-end="url(#ax-arrow)"/>
+                            <line x1="70" y1="230" x2="795" y2="230" stroke="#0f172a" stroke-width="2.5" marker-end="url(#ax-arrow)"/>
+                            <text x="25" y="38" font-family="serif" font-size="20" font-weight="bold" fill="#0f172a"><tspan font-style="italic">t</tspan>, °C</text>
+                            <text x="54" y="255" font-family="serif" font-size="20" font-weight="bold" fill="#0f172a">0</text>
+                            <text x="745" y="255" font-family="serif" font-size="20" font-weight="bold" fill="#0f172a"><tspan font-style="italic">τ</tspan>, хв</text>
+
+                            <!-- Ламана графіка -->
+                            <polyline points="70,210 100,155 190,155 260,120 350,120 420,45 490,120 580,120 650,155 740,155 765,210"
+                                      fill="none" stroke="#0284c7" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>
+
+                            <!-- Точки на графіку -->
+                            <g fill="#0284c7">
+                                <circle cx="70" cy="210" r="4"/>
+                                <circle cx="100" cy="155" r="4"/>
+                                <circle cx="190" cy="155" r="4"/>
+                                <circle cx="260" cy="120" r="4"/>
+                                <circle cx="350" cy="120" r="4"/>
+                                <circle cx="420" cy="45" r="4"/>
+                                <circle cx="490" cy="120" r="4"/>
+                                <circle cx="580" cy="120" r="4"/>
+                                <circle cx="650" cy="155" r="4"/>
+                                <circle cx="740" cy="155" r="4"/>
+                                <circle cx="765" cy="210" r="4"/>
+                            </g>
+
+                            <!-- Літери A..K точно за зразком -->
+                            <text x="48" y="205" font-family="serif" font-style="italic" font-weight="bold" font-size="20" fill="#0f172a">A</text>
+                            <text x="102" y="143" font-family="serif" font-style="italic" font-weight="bold" font-size="20" fill="#0f172a">B</text>
+                            <text x="186" y="143" font-family="serif" font-style="italic" font-weight="bold" font-size="20" fill="#0f172a">C</text>
+                            <text x="262" y="108" font-family="serif" font-style="italic" font-weight="bold" font-size="20" fill="#0f172a">D</text>
+                            <text x="346" y="108" font-family="serif" font-style="italic" font-weight="bold" font-size="20" fill="#0f172a">E</text>
+                            <text x="415" y="75" font-family="serif" font-style="italic" font-weight="bold" font-size="20" fill="#0f172a">F</text>
+                            <text x="492" y="108" font-family="serif" font-style="italic" font-weight="bold" font-size="20" fill="#0f172a">G</text>
+                            <text x="574" y="108" font-family="serif" font-style="italic" font-weight="bold" font-size="20" fill="#0f172a">H</text>
+                            <text x="652" y="143" font-family="serif" font-style="italic" font-weight="bold" font-size="20" fill="#0f172a">I</text>
+                            <text x="738" y="143" font-family="serif" font-style="italic" font-weight="bold" font-size="20" fill="#0f172a">J</text>
+                            <text x="774" y="205" font-family="serif" font-style="italic" font-weight="bold" font-size="20" fill="#0f172a">K</text>
+                        </svg>
+                    </div>
+
+                    <textarea rows="3" placeholder="Запиши аналіз ділянок графіка..." class="notebook-area w-full p-3 rounded-xl border-2 border-slate-300 text-lg md:text-xl font-bold text-slate-800 focus:outline-none focus:border-blue-500"></textarea>
+
+                    <button onclick="toggleHint('ans_4_1')" class="text-base bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl font-bold transition shadow-sm">
+                        <i class="fa-solid fa-eye mr-1.5"></i> Перевірити аналіз графіка
+                    </button>
+                    <div id="ans_4_1" class="hidden text-lg md:text-xl text-slate-900 font-bold bg-emerald-50 p-5 rounded-2xl border-2 border-emerald-300 space-y-2">
+                        <p>• <strong>$AB$</strong> — нагрівання твердого тіла (внутрішня енергія $U$ зростає);</p>
+                        <p>• <strong>$BC$</strong> — плавлення (твердий + рідкий стан; $t = \text{const}$, $U$ зростає);</p>
+                        <p>• <strong>$CD$</strong> — нагрівання рідини ($U$ зростає);</p>
+                        <p>• <strong>$DE$</strong> — кипіння (рідкий + газоподібний стан; $t = \text{const}$, $U$ зростає);</p>
+                        <p>• <strong>$EF$</strong> — нагрівання пари / газу ($U$ зростає);</p>
+                        <p>• <strong>$FG$</strong> — охолодження пари / газу ($U$ зменшується);</p>
+                        <p>• <strong>$GH$</strong> — конденсація (газоподібний + рідкий стан; $t = \text{const}$, $U$ зменшується);</p>
+                        <p>• <strong>$HI$</strong> — охолодження рідини ($U$ зменшується);</p>
+                        <p>• <strong>$IJ$</strong> — кристалізація / тверднення (рідкий + твердий стан; $t = \text{const}$, $U$ зменшується);</p>
+                        <p>• <strong>$JK$</strong> — охолодження твердого тіла ($U$ зменшується).</p>
+                        <p class="pt-2 text-emerald-950 font-black">Одночасно у двох агрегатних станах речовина перебуває на горизонтальних ділянках: $BC$, $DE$, $GH$, $IJ$.</p>
+                    </div>
+                </div>
+
+                <!-- 4.2 Тест з графіком моменту часу t1 -->
+                <div class="bg-slate-50 p-5 rounded-2xl border-2 border-slate-200 grid grid-cols-1 lg:grid-cols-12 gap-5 items-center">
+                    <div class="lg:col-span-7 space-y-3">
+                        <p class="text-xl md:text-2xl font-bold text-slate-900">
+                            ➤ Розглянь графік залежності температури речовини від часу. У початковий момент часу вона перебувала в газоподібному стані. У якому стані перебувала речовина в момент часу $\tau_1$?
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+                            <button onclick="checkChoice(this, false, 'fb_4_2')" class="text-left p-3.5 rounded-xl border-2 border-slate-300 bg-white hover:bg-blue-50 text-lg md:text-xl font-bold transition"><strong>А</strong> Тільки в газоподібному;</button>
+                            <button onclick="checkChoice(this, false, 'fb_4_2')" class="text-left p-3.5 rounded-xl border-2 border-slate-300 bg-white hover:bg-blue-50 text-lg md:text-xl font-bold transition"><strong>Б</strong> лише в рідкому;</button>
+                            <button onclick="checkChoice(this, true, 'fb_4_2')" class="text-left p-3.5 rounded-xl border-2 border-slate-300 bg-white hover:bg-blue-50 text-lg md:text-xl font-bold transition"><strong>В</strong> у рідкому та газоподібному;</button>
+                            <button onclick="checkChoice(this, false, 'fb_4_2')" class="text-left p-3.5 rounded-xl border-2 border-slate-300 bg-white hover:bg-blue-50 text-lg md:text-xl font-bold transition"><strong>Г</strong> у твердому та газоподібному.</button>
+                        </div>
+                        <p id="fb_4_2" class="hidden text-lg md:text-xl font-bold p-3.5 rounded-xl bg-emerald-100 text-emerald-950 border-2 border-emerald-400">
+                            Правильно! Варіант <strong>В</strong>. Горизонтальна ділянка відповідає процесу конденсації газу в рідину, тому в момент $\tau_1$ речовина перебуває одночасно у рідкому та газоподібному станах.
+                        </p>
+                    </div>
+
+                    <!-- Точний SVG графік 120 °C -->
+                    <div class="lg:col-span-5 bg-white border-2 border-slate-300 rounded-2xl p-3 flex justify-center">
+                        <svg viewBox="0 0 320 220" class="w-full max-w-[300px] h-auto">
+                            <defs>
+                                <marker id="ax2" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                                    <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f172a"/>
+                                </marker>
+                            </defs>
+                            <!-- Осі -->
+                            <line x1="65" y1="185" x2="65" y2="15" stroke="#0f172a" stroke-width="2" marker-end="url(#ax2)"/>
+                            <line x1="65" y1="185" x2="305" y2="185" stroke="#0f172a" stroke-width="2" marker-end="url(#ax2)"/>
+                            <text x="15" y="32" font-family="serif" font-size="18" font-weight="bold"><tspan font-style="italic">t</tspan>, °C</text>
+                            <text x="48" y="205" font-family="serif" font-size="18" font-weight="bold">0</text>
+                            <text x="260" y="208" font-family="serif" font-size="18" font-weight="bold"><tspan font-style="italic">τ</tspan>, хв</text>
+
+                            <!-- Позначка 120 -->
+                            <line x1="60" y1="45" x2="70" y2="45" stroke="#0f172a" stroke-width="2"/>
+                            <text x="22" y="51" font-family="serif" font-size="18" font-weight="bold">120</text>
+
+                            <!-- Графік конденсації -->
+                            <polyline points="65,45 92,95 220,95 290,145" fill="none" stroke="#0284c7" stroke-width="3" stroke-linecap="round"/>
+
+                            <!-- Пунктир до t1 -->
+                            <line x1="142" y1="95" x2="142" y2="185" stroke="#0f172a" stroke-width="1.5" stroke-dasharray="5 4"/>
+                            <text x="136" y="206" font-family="serif" font-size="18" font-weight="bold"><tspan font-style="italic">t</tspan><tspan dy="4" font-size="13">1</tspan></text>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- 4.3 Температура кипіння води від 99,3 до 100,7 -->
+                <div class="bg-slate-50 p-5 rounded-2xl border-2 border-slate-200 space-y-3">
+                    <p class="text-xl md:text-2xl font-bold text-slate-900">
+                        ➤ Температуру кипіння води вимірювали протягом дня декілька разів і з’ясували, що вона змінювалася від $99{,}3$ до $100{,}7\ ^\circ\text{C}$. Чим це можна пояснити?
+                    </p>
+                    <textarea rows="2" placeholder="Запиши пояснення..." class="notebook-area w-full p-3 rounded-xl border-2 border-slate-300 text-lg md:text-xl font-bold text-slate-800 focus:outline-none focus:border-blue-500"></textarea>
+                    <button onclick="toggleHint('ans_4_3')" class="text-base bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl font-bold transition">Показати пояснення</button>
+                    <p id="ans_4_3" class="hidden text-lg md:text-xl text-emerald-950 font-bold bg-emerald-100 p-4 rounded-xl border-2 border-emerald-300">
+                        Температура кипіння рідини залежить від зовнішнього (атмосферного) тиску. Протягом дня атмосферний тиск змінювався: при зниженні тиску температура кипіння опускалася до $99{,}3\ ^\circ\text{C}$, а при підвищенні тиску — зростала до $100{,}7\ ^\circ\text{C}$.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- СЛАЙД 3: Завдання 4 (частина 2: ковпаки, діаграма, графік льоду CDE) -->
+        <section id="slide-2" class="slide-page hidden h-full flex flex-col justify-between">
+            <div class="physics-card rounded-3xl p-5 md:p-8 flex-1 flex flex-col border-slate-300 overflow-y-auto space-y-6">
+                
+                <!-- 4.4 Скляні ковпаки 1, 2, 3 -->
+                <div class="bg-slate-50 p-5 rounded-2xl border-2 border-slate-200 grid grid-cols-1 lg:grid-cols-12 gap-5 items-center">
+                    <div class="lg:col-span-6 space-y-3">
+                        <p class="text-xl md:text-2xl font-bold text-slate-900">
+                            ➤ Склянки з водою, температура якої дещо нижча за температуру кипіння, стоять під скляними ковпаками. З-під одного з них повітря почали відкачувати, у другий — накачувати, а третій просто з’єднали трубкою з атмосферою. З-під якого ковпака відкачують повітря?
+                        </p>
+                        <div class="grid grid-cols-2 gap-2.5">
+                            <button onclick="checkChoice(this, false, 'fb_4_4')" class="text-left p-3 rounded-xl border-2 border-slate-300 bg-white hover:bg-blue-50 text-xl font-bold"><strong>А</strong> 1;</button>
+                            <button onclick="checkChoice(this, true, 'fb_4_4')" class="text-left p-3 rounded-xl border-2 border-slate-300 bg-white hover:bg-blue-50 text-xl font-bold"><strong>Б</strong> 2;</button>
+                            <button onclick="checkChoice(this, false, 'fb_4_4')" class="text-left p-3 rounded-xl border-2 border-slate-300 bg-white hover:bg-blue-50 text-xl font-bold"><strong>В</strong> 3;</button>
+                            <button onclick="checkChoice(this, false, 'fb_4_4')" class="text-left p-3 rounded-xl border-2 border-slate-300 bg-white hover:bg-blue-50 text-xl font-bold"><strong>Г</strong> не вистачає інформації.</button>
+                        </div>
+                        <p id="fb_4_4" class="hidden text-lg md:text-xl font-bold p-3.5 rounded-xl bg-emerald-100 text-emerald-950 border-2 border-emerald-400">
+                            Правильно! Варіант <strong>Б (ковпак 2)</strong>. При відкачуванні повітря тиск під ковпаком знижується, температура кипіння води зменшується, і гаряча вода починає кипіти (видно бульбашки та пару).
+                        </p>
+                    </div>
+
+                    <!-- Векторні малюнки трьох скляних ковпаків 1, 2, 3 -->
+                    <div class="lg:col-span-6 bg-white border-2 border-slate-300 rounded-2xl p-3 flex justify-center">
+                        <svg viewBox="0 0 430 165" class="w-full max-w-[420px] h-auto">
+                            <!-- Ковпак 1 (звичайний) -->
+                            <g transform="translate(10, 10)">
+                                <path d="M15,120 A55,55 0 1,1 125,120 Z" fill="none" stroke="#334155" stroke-width="1.8"/>
+                                <path d="M25,120 Q12,135 0,132" fill="none" stroke="#334155" stroke-width="2"/>
+                                <!-- Колба -->
+                                <rect x="61" y="55" width="18" height="22" fill="#e2e8f0" stroke="#475569" stroke-width="1.5"/>
+                                <circle cx="70" cy="96" r="23" fill="#e2e8f0" stroke="#475569" stroke-width="1.5"/>
+                                <path d="M48,96 A22,22 0 0,0 92,96 Z" fill="#38bdf8"/>
+                                <text x="70" y="143" text-anchor="middle" font-family="serif" font-size="20" font-weight="bold">1</text>
+                            </g>
+
+                            <!-- Ковпак 2 (кипіння + пара) -->
+                            <g transform="translate(145, 10)">
+                                <path d="M15,120 A55,55 0 1,1 125,120 Z" fill="none" stroke="#334155" stroke-width="1.8"/>
+                                <path d="M25,120 Q12,135 0,132" fill="none" stroke="#334155" stroke-width="2"/>
+                                <!-- Хмаринка пари над колбою -->
+                                <path d="M55,48 Q52,38 62,38 Q70,30 78,38 Q88,38 85,48 Z" fill="#bae6fd" stroke="#0284c7" stroke-width="1"/>
+                                <!-- Колба -->
+                                <rect x="61" y="55" width="18" height="22" fill="#e2e8f0" stroke="#475569" stroke-width="1.5"/>
+                                <circle cx="70" cy="96" r="23" fill="#e2e8f0" stroke="#475569" stroke-width="1.5"/>
+                                <path d="M48,96 A22,22 0 0,0 92,96 Z" fill="#38bdf8"/>
+                                <!-- Бульбашки кипіння -->
+                                <circle cx="62" cy="102" r="2" fill="#ffffff"/>
+                                <circle cx="74" cy="106" r="2.2" fill="#ffffff"/>
+                                <circle cx="68" cy="99" r="1.8" fill="#ffffff"/>
+                                <circle cx="80" cy="101" r="2" fill="#ffffff"/>
+                                <text x="70" y="143" text-anchor="middle" font-family="serif" font-size="20" font-weight="bold">2</text>
+                            </g>
+
+                            <!-- Ковпак 3 -->
+                            <g transform="translate(280, 10)">
+                                <path d="M15,120 A55,55 0 1,1 125,120 Z" fill="none" stroke="#334155" stroke-width="1.8"/>
+                                <path d="M25,120 Q12,135 0,132" fill="none" stroke="#334155" stroke-width="2"/>
+                                <!-- Колба -->
+                                <rect x="61" y="55" width="18" height="22" fill="#e2e8f0" stroke="#475569" stroke-width="1.5"/>
+                                <circle cx="70" cy="96" r="23" fill="#e2e8f0" stroke="#475569" stroke-width="1.5"/>
+                                <path d="M48,96 A22,22 0 0,0 92,96 Z" fill="#38bdf8"/>
+                                <text x="70" y="143" text-anchor="middle" font-family="serif" font-size="20" font-weight="bold">3</text>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- 4.5 Діаграма 3 кДж і 9 кДж -->
+                <div class="bg-slate-50 p-5 rounded-2xl border-2 border-slate-200 grid grid-cols-1 lg:grid-cols-12 gap-5 items-center">
+                    <div class="lg:col-span-7 space-y-3">
+                        <p class="text-xl md:text-2xl font-bold text-slate-900">
+                            ➤ На діаграмі наведено значення кількості теплоти, необхідної для переходу двох різних рідин однакової маси з рідкого стану в газоподібний за температури кипіння. Укажи, у якому співвідношенні перебувають питома теплота пароутворення однієї речовини й питома теплота пароутворення другої речовини (на діаграмі позначено $\lambda_1$ та $\lambda_2$ або $r_1$ та $r_2$).
+                        </p>
+                        <div class="grid grid-cols-2 gap-2.5">
+                            <button onclick="checkChoice(this, false, 'fb_4_5')" class="text-left p-3.5 rounded-xl border-2 border-slate-300 bg-white hover:bg-blue-50 text-xl font-bold"><strong>А</strong> $\lambda_2 = 0{,}33 \cdot \lambda_1$;</button>
+                            <button onclick="checkChoice(this, false, 'fb_4_5')" class="text-left p-3.5 rounded-xl border-2 border-slate-300 bg-white hover:bg-blue-50 text-xl font-bold"><strong>Б</strong> $\lambda_2 = \lambda_1$;</button>
+                            <button onclick="checkChoice(this, false, 'fb_4_5')" class="text-left p-3.5 rounded-xl border-2 border-slate-300 bg-white hover:bg-blue-50 text-xl font-bold"><strong>В</strong> $\lambda_2 = 1{,}5 \cdot \lambda_1$;</button>
+                            <button onclick="checkChoice(this, true, 'fb_4_5')" class="text-left p-3.5 rounded-xl border-2 border-slate-300 bg-white hover:bg-blue-50 text-xl font-bold"><strong>Г</strong> $\lambda_2 = 3 \cdot \lambda_1$.</button>
+                        </div>
+                        <p id="fb_4_5" class="hidden text-lg md:text-xl font-bold p-3.5 rounded-xl bg-emerald-100 text-emerald-950 border-2 border-emerald-400">
+                            Правильно! Варіант <strong>Г</strong>. За діаграмою $Q_1 = 3\ \text{кДж}$, $Q_2 = 9\ \text{кДж}$. Оскільки $m_1 = m_2$, то $\frac{\lambda_2}{\lambda_1} = \frac{Q_2}{Q_1} = \frac{9}{3} = 3 \Rightarrow \lambda_2 = 3 \cdot \lambda_1$.
+                        </p>
+                    </div>
+
+                    <!-- Точна стовпчаста діаграма Q, кДж (0..10) -->
+                    <div class="lg:col-span-5 bg-white border-2 border-slate-300 rounded-2xl p-3 flex justify-center">
+                        <svg viewBox="0 0 260 275" class="w-full max-w-[240px] h-auto">
+                            <defs>
+                                <marker id="ax3" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                                    <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f172a"/>
+                                </marker>
+                            </defs>
+                            <!-- Осі -->
+                            <line x1="65" y1="240" x2="65" y2="18" stroke="#0f172a" stroke-width="2" marker-end="url(#ax3)"/>
+                            <line x1="65" y1="240" x2="245" y2="240" stroke="#0f172a" stroke-width="2" marker-end="url(#ax3)"/>
+                            <text x="5" y="25" font-family="serif" font-size="16" font-weight="bold"><tspan font-style="italic">Q</tspan>, кДж</text>
+                            <text x="45" y="258" font-family="serif" font-size="17" font-weight="bold">0</text>
+
+                            <!-- Поділки 1..10 (крок 20px) -->
+                            <g font-family="serif" font-size="16" font-weight="bold" text-anchor="end">
+                                <line x1="60" y1="220" x2="70" y2="220" stroke="#0f172a"/><text x="55" y="225">1</text>
+                                <line x1="60" y1="200" x2="70" y2="200" stroke="#0f172a"/><text x="55" y="205">2</text>
+                                <line x1="60" y1="180" x2="70" y2="180" stroke="#0f172a"/><text x="55" y="185">3</text>
+                                <line x1="60" y1="160" x2="70" y2="160" stroke="#0f172a"/><text x="55" y="165">4</text>
+                                <line x1="60" y1="140" x2="70" y2="140" stroke="#0f172a"/><text x="55" y="145">5</text>
+                                <line x1="60" y1="120" x2="70" y2="120" stroke="#0f172a"/><text x="55" y="125">6</text>
+                                <line x1="60" y1="100" x2="70" y2="100" stroke="#0f172a"/><text x="55" y="105">7</text>
+                                <line x1="60" y1="80" x2="70" y2="80" stroke="#0f172a"/><text x="55" y="85">8</text>
+                                <line x1="60" y1="60" x2="70" y2="60" stroke="#0f172a"/><text x="55" y="65">9</text>
+                                <line x1="60" y1="40" x2="70" y2="40" stroke="#0f172a"/><text x="55" y="45">10</text>
+                            </g>
+
+                            <!-- Пунктирні лінії -->
+                            <line x1="70" y1="180" x2="90" y2="180" stroke="#334155" stroke-width="1.5" stroke-dasharray="4 3"/>
+                            <line x1="70" y1="60" x2="155" y2="60" stroke="#334155" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+                            <!-- Стовпчик 1 (висота 3 -> y=180..240) -->
+                            <rect x="90" y="180" width="52" height="60" fill="#84cc16" stroke="#1e293b" stroke-width="1.5"/>
+                            <text x="116" y="260" text-anchor="middle" font-family="serif" font-size="18" font-weight="bold">1</text>
+
+                            <!-- Стовпчик 2 (висота 9 -> y=60..240) -->
+                            <rect x="155" y="60" width="52" height="180" fill="#0284c7" stroke="#1e293b" stroke-width="1.5"/>
+                            <text x="181" y="260" text-anchor="middle" font-family="serif" font-size="18" font-weight="bold">2</text>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- 4.6 Задача з графіком льоду 1 кг на ділянці CDE -->
+                <div class="bg-slate-50 p-5 rounded-2xl border-2 border-slate-200 space-y-4">
+                    <p class="text-xl md:text-2xl font-bold text-slate-900 leading-relaxed">
+                        ➤ Лід масою $1\ \text{кг}$ за температури $-40\ ^\circ\text{C}$ почали нагрівати. Розглянь графік залежності температури тіла від часу нагрівання. Яку кількість теплоти отримала речовина на ділянці $CDE$?
+                    </p>
+
+                    <!-- Точний SVG графік по клітинках (крок 28px) -->
+                    <div class="bg-white border-2 border-slate-300 rounded-2xl p-4 flex justify-center overflow-x-auto">
+                        <svg viewBox="0 0 640 310" class="w-full max-w-[620px] h-auto">
+                            <defs>
+                                <pattern id="grid-ice" width="28" height="28" patternUnits="userSpaceOnUse">
+                                    <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#cbd5e1" stroke-width="1.2"/>
+                                </pattern>
+                                <marker id="ax4" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                                    <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f172a"/>
+                                </marker>
+                            </defs>
+                            <!-- Клітинки фону (22x10 клітинок) -->
+                            <rect x="14" y="14" width="616" height="280" fill="url(#grid-ice)" stroke="#94a3b8" stroke-width="1.2"/>
+
+                            <!-- Вісь t (x = 14 + 3*28 = 98) -->
+                            <line x1="98" y1="294" x2="98" y2="24" stroke="#0f172a" stroke-width="2.2" marker-end="url(#ax4)"/>
+                            <!-- Вісь tau (0 °C на y = 14 + 7*28 = 210) -->
+                            <line x1="98" y1="210" x2="510" y2="210" stroke="#0f172a" stroke-width="2.2" marker-end="url(#ax4)"/>
+
+                            <text x="48" y="42" font-family="serif" font-size="19" font-weight="bold"><tspan font-style="italic">t</tspan>, °C</text>
+                            <text x="455" y="232" font-family="serif" font-size="19" font-weight="bold"><tspan font-style="italic">τ</tspan>, хв</text>
+
+                            <!-- Поділки по осі t (1 клітинка = 20 °C) -->
+                            <g font-family="serif" font-size="17" font-weight="bold" text-anchor="end">
+                                <line x1="93" y1="70" x2="103" y2="70" stroke="#0f172a" stroke-width="1.8"/><text x="89" y="76">100</text>
+                                <line x1="93" y1="98" x2="103" y2="98" stroke="#0f172a" stroke-width="1.8"/><text x="89" y="104">80</text>
+                                <line x1="93" y1="126" x2="103" y2="126" stroke="#0f172a" stroke-width="1.8"/><text x="89" y="132">60</text>
+                                <line x1="93" y1="154" x2="103" y2="154" stroke="#0f172a" stroke-width="1.8"/><text x="89" y="160">40</text>
+                                <line x1="93" y1="182" x2="103" y2="182" stroke="#0f172a" stroke-width="1.8"/><text x="89" y="188">20</text>
+                                <text x="89" y="216">0</text>
+                                <line x1="93" y1="238" x2="103" y2="238" stroke="#0f172a" stroke-width="1.8"/><text x="89" y="244">–20</text>
+                                <line x1="93" y1="266" x2="103" y2="266" stroke="#0f172a" stroke-width="1.8"/><text x="89" y="272">–40</text>
+                            </g>
+
+                            <!-- Поділки по осі часу (1 клітинка = 0.2 хв, 5 клітинок = 1 хв -> x = 98 + 5*28 = 238) -->
+                            <g stroke="#0f172a" stroke-width="1.5">
+                                <line x1="126" y1="205" x2="126" y2="215"/>
+                                <line x1="154" y1="205" x2="154" y2="215"/>
+                                <line x1="182" y1="205" x2="182" y2="215"/>
+                                <line x1="210" y1="205" x2="210" y2="215"/>
+                                <line x1="238" y1="204" x2="238" y2="216" stroke-width="2"/>
+                                <line x1="266" y1="205" x2="266" y2="215"/>
+                                <line x1="294" y1="205" x2="294" y2="215"/>
+                                <line x1="322" y1="205" x2="322" y2="215"/>
+                                <line x1="350" y1="205" x2="350" y2="215"/>
+                                <line x1="378" y1="205" x2="378" y2="215"/>
+                                <line x1="406" y1="205" x2="406" y2="215"/>
+                                <line x1="434" y1="205" x2="434" y2="215"/>
+                                <line x1="462" y1="205" x2="462" y2="215"/>
+                            </g>
+                            <text x="238" y="233" text-anchor="middle" font-family="serif" font-size="18" font-weight="bold">1</text>
+
+                            <!-- Графік A(98,266) -> B(126,210) -> C(238,210) -> D(378,70) -> E(434,70) -->
+                            <polyline points="98,266 126,210 238,210 378,70 434,70" fill="none" stroke="#0284c7" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/>
+
+                            <!-- Підписи точок A, B, C, D, E -->
+                            <text x="112" y="262" font-family="serif" font-style="italic" font-weight="bold" font-size="20">A</text>
+                            <text x="128" y="200" font-family="serif" font-style="italic" font-weight="bold" font-size="20">B</text>
+                            <text x="220" y="200" font-family="serif" font-style="italic" font-weight="bold" font-size="20">C</text>
+                            <text x="364" y="60" font-family="serif" font-style="italic" font-weight="bold" font-size="20">D</text>
+                            <text x="424" y="60" font-family="serif" font-style="italic" font-weight="bold" font-size="20">E</text>
+                        </svg>
+                    </div>
+
+                    <button onclick="toggleHint('sol_4_6')" class="text-base bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-xl font-bold transition shadow-sm">
+                        <i class="fa-solid fa-calculator mr-1.5"></i> Показати розв’язання на ділянці $CDE$
+                    </button>
+                    <div id="sol_4_6" class="hidden text-lg md:text-xl text-slate-900 font-bold bg-emerald-50 p-5 rounded-2xl border-2 border-emerald-300 space-y-2">
+                        <p>З графіка видно, що час нагрівання пропорційний кількості теплоти (потужність нагрівника стала):</p>
+                        <p>• На ділянці <strong>$AB$</strong> (1 клітинка часу = $0{,}2\ \text{хв}$) лід масою $m = 1\ \text{кг}$ нагрівається від $-40\ ^\circ\text{C}$ до $0\ ^\circ\text{C}$ ($\Delta t_1 = 40\ ^\circ\text{C}$):</p>
+                        <p class="pl-4 font-mono">$Q_{AB} = c_{\text{льоду}} m \Delta t_1 = 2100 \cdot 1 \cdot 40 = 84\,000\ \text{Дж} = 84\ \text{кДж}$ (припадає на <strong>1 клітинку</strong> часу).</p>
+                        <p>• Ділянка <strong>$CD$</strong> (нагрівання води від $0$ до $100\ ^\circ\text{C}$) триває <strong>5 клітинок</strong> часу ($1\ \text{хв}$), а ділянка <strong>$DE$</strong> (кипіння частини води) — ще <strong>2 клітинки</strong> часу ($0{,}4\ \text{хв}$). Разом на ділянці $CDE$ витрачено $5 + 2 = 7\ \text{клітинок}$ часу.</p>
+                        <p class="pl-4 font-mono">$Q_{CDE} = 7 \cdot Q_{AB} = 7 \cdot 84\ \text{кДж} = 588\ \text{кДж}$.</p>
+                        <p class="text-emerald-950 font-black pt-1">Відповідь: $Q_{CDE} = 588\ \text{кДж}$ (з них $420\ \text{кДж}$ пішло на нагрівання води на $CD$ та $168\ \text{кДж}$ — на пароутворення на $DE$).</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- СЛАЙД 4: Завдання 5–6 -->
+        <section id="slide-3" class="slide-page hidden h-full flex flex-col justify-between">
+            <div class="physics-card rounded-3xl p-5 md:p-8 flex-1 flex flex-col border-slate-300 overflow-y-auto space-y-6">
+                
+                <!-- Завдання 5 -->
+                <div class="bg-slate-50 p-5 md:p-6 rounded-2xl border-2 border-slate-200 space-y-4">
+                    <h2 class="text-xl md:text-2xl font-black text-slate-900">
+                        5. Поясни, чому вода гасить вогонь.
+                    </h2>
+                    <textarea rows="3" placeholder="Запиши фізичне пояснення..." class="notebook-area w-full p-3 rounded-xl border-2 border-slate-300 text-lg md:text-xl font-bold text-slate-800 focus:outline-none focus:border-blue-500"></textarea>
+                    <button onclick="toggleHint('ans_5')" class="text-base bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-xl font-bold transition shadow-sm">
+                        <i class="fa-solid fa-eye mr-1.5"></i> Перевірити пояснення
+                    </button>
+                    <div id="ans_5" class="hidden text-lg md:text-xl text-emerald-950 font-bold bg-emerald-100 p-5 rounded-xl border-2 border-emerald-300 space-y-2">
+                        <p>1. Потрапляючи на палаюче тіло, вода нагрівається до $100\ ^\circ\text{C}$ і інтенсивно випаровується. Оскільки вода має велику питому теплоємність ($4200\ \frac{\text{Дж}}{\text{кг}\cdot^\circ\text{C}}$) і дуже велику питому теплоту пароутворення ($2{,}3\ \frac{\text{МДж}}{\text{кг}}$), вона забирає від палаючого тіла величезну кількість теплоти, охолоджуючи його нижче температури займання.</p>
+                        <p>2. Утворена водяна пара витісняє повітря і перекриває доступ кисню, необхідного для підтримання горіння.</p>
+                    </div>
+                </div>
+
+                <!-- Завдання 6 -->
+                <div class="bg-slate-50 p-5 md:p-6 rounded-2xl border-2 border-slate-200 space-y-4">
+                    <h2 class="text-xl md:text-2xl font-black text-slate-900 leading-relaxed">
+                        6. Розглянь графіки залежності температури двох різних речовин однакової маси від часу нагрівання. Питома теплота пароутворення якої з речовин менша та в скільки разів? У початковий момент часу речовини перебували в рідкому стані. Кожна речовина щосекунди поглинала однакову кількість теплоти.
+                    </h2>
+
+                    <!-- Точний SVG графік двох речовин 1 та 2 по клітинках -->
+                    <div class="bg-white border-2 border-slate-300 rounded-2xl p-4 flex justify-center overflow-x-auto">
+                        <svg viewBox="0 0 640 280" class="w-full max-w-[620px] h-auto">
+                            <defs>
+                                <pattern id="grid-6" width="28" height="28" patternUnits="userSpaceOnUse">
+                                    <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#cbd5e1" stroke-width="1.2"/>
+                                </pattern>
+                                <marker id="ax6" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                                    <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f172a"/>
+                                </marker>
+                            </defs>
+                            <!-- Сітка клітинок -->
+                            <rect x="14" y="14" width="616" height="252" fill="url(#grid-6)" stroke="#94a3b8" stroke-width="1.2"/>
+
+                            <!-- Осі координат: початок (70, 238) -->
+                            <line x1="70" y1="238" x2="70" y2="24" stroke="#0f172a" stroke-width="2.2" marker-end="url(#ax6)"/>
+                            <line x1="70" y1="238" x2="325" y2="238" stroke="#0f172a" stroke-width="2.2" marker-end="url(#ax6)"/>
+
+                            <text x="24" y="42" font-family="serif" font-size="19" font-weight="bold"><tspan font-style="italic">t</tspan>, °C</text>
+                            <text x="50" y="258" font-family="serif" font-size="19" font-weight="bold">0</text>
+                            <text x="285" y="260" font-family="serif" font-size="19" font-weight="bold"><tspan font-style="italic">τ</tspan>, хв</text>
+
+                            <!-- Поділки по осі t -->
+                            <line x1="65" y1="182" x2="75" y2="182" stroke="#0f172a" stroke-width="1.8"/>
+                            <line x1="65" y1="126" x2="75" y2="126" stroke="#0f172a" stroke-width="1.8"/>
+                            <line x1="65" y1="70" x2="75" y2="70" stroke="#0f172a" stroke-width="1.8"/>
+
+                            <!-- Поділки по осі часу (крок 28px = 1 клітинка) -->
+                            <g stroke="#0f172a" stroke-width="1.8">
+                                <line x1="98" y1="233" x2="98" y2="243"/>
+                                <line x1="126" y1="233" x2="126" y2="243"/>
+                                <line x1="154" y1="233" x2="154" y2="243"/>
+                                <line x1="182" y1="233" x2="182" y2="243"/>
+                                <line x1="210" y1="233" x2="210" y2="243"/>
+                                <line x1="238" y1="233" x2="238" y2="243"/>
+                                <line x1="266" y1="233" x2="266" y2="243"/>
+                            </g>
+
+                            <!-- Графік 1: (0,0)->(3 кл, 5 кл) [70,238 -> 154,98] -> кипіння 4 кл [154,98 -> 266,98] -> пара [266,98 -> 305,42] -->
+                            <polyline points="70,238 154,98 266,98 302,46" fill="none" stroke="#0284c7" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/>
+                            <text x="275" y="42" font-family="serif" font-size="20" font-weight="bold">1</text>
+
+                            <!-- Графік 2: (0,0)->(2 кл, 2 кл) [70,238 -> 126,182] -> кипіння 6 кл [126,182 -> 294,182] -> пара [294,182 -> 340,154] -->
+                            <polyline points="70,238 126,182 294,182 340,154" fill="none" stroke="#0284c7" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/>
+                            <text x="315" y="148" font-family="serif" font-size="20" font-weight="bold">2</text>
+                        </svg>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-3">
+                        <button onclick="toggleHint('ans_6')" class="text-base bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-xl font-bold transition shadow-sm">
+                            <i class="fa-solid fa-calculator mr-1.5"></i> Показати розв’язання та відповідь
+                        </button>
+                    </div>
+
+                    <div id="ans_6" class="hidden text-lg md:text-xl text-slate-900 font-bold bg-emerald-50 p-5 rounded-2xl border-2 border-emerald-300 space-y-2">
+                        <p>1. Процес кипіння відповідає горизонтальній ділянці графіка:</p>
+                        <p>• для <strong>речовини 1</strong> кипіння тривало $\tau_1 = 4\ \text{клітинки}$ часу;</p>
+                        <p>• для <strong>речовини 2</strong> кипіння тривало $\tau_2 = 6\ \text{клітинок}$ часу.</p>
+                        <p>2. Оскільки потужність нагрівників однакова ($Q \sim \tau$), а маси рідин рівні ($m_1 = m_2$), то:</p>
+                        <p class="pl-4 font-mono">$\frac{r_2}{r_1} = \frac{Q_2}{Q_1} = \frac{\tau_2}{\tau_1} = \frac{6}{4} = 1{,}5$.</p>
+                        <p class="text-emerald-950 font-black pt-1">Відповідь: питома теплота пароутворення <strong>першої речовини менша в $1{,}5$ раза</strong>.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- СЛАЙД 5: Завдання 7 (Задачі 7.1, 7.2, 7.3, 7.4*) -->
+        <section id="slide-4" class="slide-page hidden h-full flex flex-col justify-between">
+            <div class="physics-card rounded-3xl p-5 md:p-8 flex-1 flex flex-col border-slate-300 overflow-y-auto space-y-6">
+                
+                <div class="flex flex-wrap items-center justify-between gap-2 border-b-2 border-slate-200 pb-3">
+                    <h2 class="text-xl md:text-2xl font-black text-slate-900">7. Розв’яжи задачі.</h2>
+                    <div class="text-sm md:text-base font-bold bg-slate-100 px-3 py-1.5 rounded-xl border border-slate-300 text-slate-700">
+                        Табличні дані: $c_{\text{л}} = 2100$, $c_{\text{в}} = 4200$, $c_{\text{ст}} = 500\ \frac{\text{Дж}}{\text{кг}\cdot^\circ\text{C}}$; $\lambda = 330\ \frac{\text{кДж}}{\text{кг}}$; $r = 2{,}3\ \frac{\text{МДж}}{\text{кг}}$
+                    </div>
+                </div>
+
+                <!-- Задача 7.1 -->
+                <div class="bg-white p-5 rounded-2xl border-2 border-blue-200 shadow-sm space-y-3">
+                    <p class="text-lg md:text-2xl font-bold text-slate-900 leading-snug">
+                        <span class="font-black text-blue-800">7.1.</span> Визнач мінімальну масу водяної пари, що потрібно впустити в калориметр, у якому міститься $800\ \text{г}$ льоду за температури $-10\ ^\circ\text{C}$, для того щоб увесь лід розтанув. Початкова температура пари дорівнює $100\ ^\circ\text{C}$. Теплообміном із навколишнім середовищем та теплоємністю калориметра знехтуй.
+                    </p>
+                    <button onclick="toggleHint('sol_7_1')" class="text-base bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-xl font-bold transition shadow-sm">
+                        <i class="fa-solid fa-calculator mr-1.5"></i> Показати розв’язання
+                    </button>
+                    <div id="sol_7_1" class="hidden text-lg md:text-xl text-slate-900 font-bold bg-emerald-50 p-5 rounded-2xl border-2 border-emerald-300 grid grid-cols-1 md:grid-cols-12 gap-4">
+                        <div class="md:col-span-5 border-b md:border-b-0 md:border-r-2 border-emerald-300 pb-3 md:pb-0 md:pr-4">
+                            <p class="font-black text-emerald-900 mb-2">Дано:</p>
+                            <p>$m_{\text{л}} = 800\ \text{г} = 0{,}8\ \text{кг}$</p>
+                            <p>$t_{\text{л}} = -10\ ^\circ\text{C}$</p>
+                            <p>$t_{\text{п}} = 100\ ^\circ\text{C}$</p>
+                            <p>$\theta = 0\ ^\circ\text{C}$ (мін. для танення)</p>
+                            <p>$c_{\text{л}} = 2100\ \text{Дж/(кг}\cdot^\circ\text{C)}$</p>
+                            <p>$c_{\text{в}} = 4200\ \text{Дж/(кг}\cdot^\circ\text{C)}$</p>
+                            <p>$\lambda = 3{,}3 \cdot 10^5\ \text{Дж/кг}$</p>
+                            <p>$r = 2{,}3 \cdot 10^6\ \text{Дж/кг}$</p>
+                            <hr class="border-emerald-300 my-2">
+                            <p>$m_{\text{п}} - ?$</p>
+                        </div>
+                        <div class="md:col-span-7 space-y-1.5">
+                            <p class="font-black text-emerald-900 mb-2">Розв’язання:</p>
+                            <p>Рівняння теплового балансу ($Q_{\text{отр}} = Q_{\text{відд}}$):</p>
+                            <p>$c_{\text{л}} m_{\text{л}} (0 - t_{\text{л}}) + \lambda m_{\text{л}} = r m_{\text{п}} + c_{\text{в}} m_{\text{п}} (t_{\text{п}} - 0)$</p>
+                            <p>1) Поглинута льодом теплота:</p>
+                            <p>$Q_{\text{отр}} = 2100 \cdot 0{,}8 \cdot 10 + 3{,}3 \cdot 10^5 \cdot 0{,}8 = 16\,800 + 264\,000 = 280\,800\ \text{Дж}$</p>
+                            <p>2) Виділена $1\ \text{кг}$ пари теплота при охолодженні до $0\ ^\circ\text{C}$:</p>
+                            <p>$q_{\text{відд}} = 2{,}3 \cdot 10^6 + 4200 \cdot 100 = 2\,720\,000\ \text{Дж/кг}$</p>
+                            <p>3) $m_{\text{п}} = \frac{280\,800}{2\,720\,000} \approx 0{,}103\ \text{кг} = 103\ \text{г}$</p>
+                            <p class="mt-2 text-emerald-950 font-black">Відповідь: $m_{\text{п}} \approx 103\ \text{г}$.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Задача 7.2 -->
+                <div class="bg-white p-5 rounded-2xl border-2 border-indigo-200 shadow-sm space-y-3">
+                    <p class="text-lg md:text-2xl font-bold text-slate-900 leading-snug">
+                        <span class="font-black text-indigo-800">7.2.</span> У сталевому калориметрі масою $300\ \text{г}$ міститься лід за температури $-20\ ^\circ\text{C}$. У калориметр впускають $100\ \text{г}$ водяної пари, температура якої дорівнює $100\ ^\circ\text{C}$. Після завершення теплообміну в калориметрі встановилася температура $5\ ^\circ\text{C}$. Визнач початкову масу льоду в калориметрі. Теплообміном із навколишнім середовищем знехтуй.
+                    </p>
+                    <button onclick="toggleHint('sol_7_2')" class="text-base bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-xl font-bold transition shadow-sm">
+                        <i class="fa-solid fa-calculator mr-1.5"></i> Показати розв’язання
+                    </button>
+                    <div id="sol_7_2" class="hidden text-lg md:text-xl text-slate-900 font-bold bg-emerald-50 p-5 rounded-2xl border-2 border-emerald-300 grid grid-cols-1 md:grid-cols-12 gap-4">
+                        <div class="md:col-span-5 border-b md:border-b-0 md:border-r-2 border-emerald-300 pb-3 md:pb-0 md:pr-4">
+                            <p class="font-black text-emerald-900 mb-2">Дано:</p>
+                            <p>$m_{\text{к}} = 300\ \text{г} = 0{,}3\ \text{кг}$</p>
+                            <p>$c_{\text{ст}} = 500\ \text{Дж/(кг}\cdot^\circ\text{C)}$</p>
+                            <p>$t_1 = -20\ ^\circ\text{C}$</p>
+                            <p>$m_{\text{п}} = 100\ \text{г} = 0{,}1\ \text{кг}$</p>
+                            <p>$t_{\text{п}} = 100\ ^\circ\text{C}$</p>
+                            <p>$\theta = 5\ ^\circ\text{C}$</p>
+                            <hr class="border-emerald-300 my-2">
+                            <p>$m_{\text{л}} - ?$</p>
+                        </div>
+                        <div class="md:col-span-7 space-y-1.5">
+                            <p class="font-black text-emerald-900 mb-2">Розв’язання:</p>
+                            <p>1) Теплота, яку віддала пара при конденсації та охолодженні до $5\ ^\circ\text{C}$:</p>
+                            <p>$Q_{\text{п}} = r m_{\text{п}} + c_{\text{в}} m_{\text{п}} (100 - 5) = 230\,000 + 39\,900 = 269\,900\ \text{Дж}$</p>
+                            <p>2) Теплота, яку отримав сталевий калориметр:</p>
+                            <p>$Q_{\text{к}} = c_{\text{ст}} m_{\text{к}} (5 - (-20)) = 500 \cdot 0{,}3 \cdot 25 = 3\,750\ \text{Дж}$</p>
+                            <p>3) Теплота, що пішла на нагрівання льоду, його плавлення і нагрівання талої води до $5\ ^\circ\text{C}$:</p>
+                            <p>$Q_{\text{л}} = Q_{\text{п}} - Q_{\text{к}} = 269\,900 - 3\,750 = 266\,150\ \text{Дж}$</p>
+                            <p>$Q_{\text{л}} = m_{\text{л}} [c_{\text{л}}(0 - (-20)) + \lambda + c_{\text{в}}(5 - 0)] = m_{\text{л}} (42\,000 + 330\,000 + 21\,000) = 393\,000\, m_{\text{л}}$</p>
+                            <p>4) $m_{\text{л}} = \frac{266\,150}{393\,000} \approx 0{,}677\ \text{кг} = 677\ \text{г}$</p>
+                            <p class="mt-2 text-emerald-950 font-black">Відповідь: $m_{\text{л}} \approx 677\ \text{г}$.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Задача 7.3 -->
+                <div class="bg-white p-5 rounded-2xl border-2 border-teal-200 shadow-sm space-y-3">
+                    <p class="text-lg md:text-2xl font-bold text-slate-900 leading-snug">
+                        <span class="font-black text-teal-800">7.3.</span> У калориметр, що містить $2\ \text{кг}$ льоду за температури $-50\ ^\circ\text{C}$, впустили $200\ \text{г}$ водяної пари, температура якої дорівнює $100\ ^\circ\text{C}$. Визнач температуру теплової рівноваги. Яку масу води міститиме калориметр? Теплоємністю калориметра й теплообміном із навколишнім середовищем знехтуй.
+                    </p>
+                    <button onclick="toggleHint('sol_7_3')" class="text-base bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-xl font-bold transition shadow-sm">
+                        <i class="fa-solid fa-calculator mr-1.5"></i> Показати розв’язання
+                    </button>
+                    <div id="sol_7_3" class="hidden text-lg md:text-xl text-slate-900 font-bold bg-emerald-50 p-5 rounded-2xl border-2 border-emerald-300 grid grid-cols-1 md:grid-cols-12 gap-4">
+                        <div class="md:col-span-5 border-b md:border-b-0 md:border-r-2 border-emerald-300 pb-3 md:pb-0 md:pr-4">
+                            <p class="font-black text-emerald-900 mb-2">Дано:</p>
+                            <p>$m_{\text{л}} = 2\ \text{кг}$</p>
+                            <p>$t_{\text{л}} = -50\ ^\circ\text{C}$</p>
+                            <p>$m_{\text{п}} = 200\ \text{г} = 0{,}2\ \text{кг}$</p>
+                            <p>$t_{\text{п}} = 100\ ^\circ\text{C}$</p>
+                            <hr class="border-emerald-300 my-2">
+                            <p>$\theta - ? \quad m_{\text{в}} - ?$</p>
+                        </div>
+                        <div class="md:col-span-7 space-y-1.5">
+                            <p class="font-black text-emerald-900 mb-2">Розв’язання:</p>
+                            <p>1) Теплота для нагрівання льоду до $0\ ^\circ\text{C}$:</p>
+                            <p>$Q_1 = c_{\text{л}} m_{\text{л}} (0 - (-50)) = 2100 \cdot 2 \cdot 50 = 210\,000\ \text{Дж}$</p>
+                            <p>2) Теплота для плавлення всього льоду: $Q_2 = \lambda m_{\text{л}} = 330\,000 \cdot 2 = 660\,000\ \text{Дж}$.</p>
+                            <p>3) Максимальна теплота, яку віддасть пара при конденсації та охолодженні до $0\ ^\circ\text{C}$:</p>
+                            <p>$Q_{\text{п}} = r m_{\text{п}} + c_{\text{в}} m_{\text{п}} \cdot 100 = 460\,000 + 84\,000 = 544\,000\ \text{Дж}$.</p>
+                            <p>Оскільки $Q_1 < Q_{\text{п}} < Q_1 + Q_2$, лід розтане лише частково, тому $\theta = 0\ ^\circ\text{C}$.</p>
+                            <p>4) Маса розплавленого льоду: $\Delta m_{\text{л}} = \frac{Q_{\text{п}} - Q_1}{\lambda} = \frac{544\,000 - 210\,000}{330\,000} \approx 1{,}012\ \text{кг}$.</p>
+                            <p>5) Загальна маса води: $m_{\text{в}} = m_{\text{п}} + \Delta m_{\text{л}} = 0{,}2 + 1{,}012 \approx 1{,}21\ \text{кг}$.</p>
+                            <p class="mt-2 text-emerald-950 font-black">Відповідь: $\theta = 0\ ^\circ\text{C}$; $m_{\text{в}} \approx 1{,}21\ \text{кг}$.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Задача 7.4* -->
+                <div class="bg-white p-5 rounded-2xl border-2 border-amber-300 shadow-sm space-y-3">
+                    <p class="text-lg md:text-2xl font-bold text-slate-900 leading-snug">
+                        <span class="font-black text-amber-800">7.4.*</span> У теплоізольованій посудині міститься вода за температури $0\ ^\circ\text{C}$. Унаслідок інтенсивного відкачування повітря з посудини в ній не залишилося води. Яка частина води випарувалася? Теплоємністю посудини та теплообміном із навколишнім середовищем знехтуй.
+                    </p>
+                    <button onclick="toggleHint('sol_7_4')" class="text-base bg-amber-600 hover:bg-amber-700 text-white px-5 py-2.5 rounded-xl font-bold transition shadow-sm">
+                        <i class="fa-solid fa-star mr-1.5"></i> Показати розв’язання задачі підвищеної складності
+                    </button>
+                    <div id="sol_7_4" class="hidden text-lg md:text-xl text-slate-900 font-bold bg-amber-50 p-5 rounded-2xl border-2 border-amber-300 grid grid-cols-1 md:grid-cols-12 gap-4">
+                        <div class="md:col-span-5 border-b md:border-b-0 md:border-r-2 border-amber-300 pb-3 md:pb-0 md:pr-4">
+                            <p class="font-black text-amber-900 mb-2">Дано:</p>
+                            <p>$t = 0\ ^\circ\text{C}$</p>
+                            <p>$r = 2{,}5 \cdot 10^6\ \text{Дж/кг}$ (при $0\ ^\circ\text{C}$) або $2{,}3 \cdot 10^6\ \text{Дж/кг}$</p>
+                            <p>$\lambda = 3{,}3 \cdot 10^5\ \text{Дж/кг}$</p>
+                            <hr class="border-amber-300 my-2">
+                            <p>$\frac{m_1}{m} - ?$</p>
+                        </div>
+                        <div class="md:col-span-7 space-y-1.5">
+                            <p class="font-black text-amber-900 mb-2">Розв’язання:</p>
+                            <p>Оскільки посудина теплоізольована, а в кінці в ній не залишилося рідкої води (при $0\ ^\circ\text{C}$), частина води масою $m_1$ випарувалася, забравши теплоту, а решта масою $m_2 = m - m_1$ замерзла (перетворилася на лід):</p>
+                            <p class="my-1">$r m_1 = \lambda m_2 \Rightarrow r m_1 = \lambda (m - m_1)$</p>
+                            <p class="my-1">$(r + \lambda) m_1 = \lambda m \Rightarrow \frac{m_1}{m} = \frac{\lambda}{r + \lambda}$</p>
+                            <p>Підставимо значення: $\frac{m_1}{m} = \frac{0{,}33 \cdot 10^6}{2{,}3 \cdot 10^6 + 0{,}33 \cdot 10^6} = \frac{0{,}33}{2{,}63} \approx 0{,}125$ (або $\frac{1}{8}$).</p>
+                            <p class="mt-2 text-amber-950 font-black">Відповідь: випарувалася приблизно $0{,}125$ ($\frac{1}{8}$ частина, або $12{,}5\%$) усієї води.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Нижня панель навігації -->
+    <footer class="bg-white border-2 border-slate-300 rounded-2xl px-4 py-3 flex items-center justify-between shrink-0 mt-2 shadow-sm">
+        <button onclick="prevSlide()" id="btn-prev" class="btn-nav bg-slate-100 hover:bg-slate-200 text-slate-900 font-black px-5 py-2.5 rounded-xl border-2 border-slate-300 flex items-center gap-2 text-base md:text-lg">
+            <i class="fa-solid fa-chevron-left"></i> Назад
+        </button>
+
+        <!-- Індикатори сторінок для швидкого переходу -->
+        <div class="flex items-center gap-1.5 sm:gap-2">
+            <button onclick="goToSlide(0)" class="step-dot px-3 py-1.5 rounded-lg font-bold text-sm md:text-base transition" data-step="0">1–3</button>
+            <button onclick="goToSlide(1)" class="step-dot px-3 py-1.5 rounded-lg font-bold text-sm md:text-base transition" data-step="1">4 (Графіки)</button>
+            <button onclick="goToSlide(2)" class="step-dot px-3 py-1.5 rounded-lg font-bold text-sm md:text-base transition" data-step="2">4 (Задачі)</button>
+            <button onclick="goToSlide(3)" class="step-dot px-3 py-1.5 rounded-lg font-bold text-sm md:text-base transition" data-step="3">5–6</button>
+            <button onclick="goToSlide(4)" class="step-dot px-3 py-1.5 rounded-lg font-bold text-sm md:text-base transition" data-step="4">7.1–7.4*</button>
+        </div>
+
+        <button onclick="nextSlide()" id="btn-next" class="btn-nav bg-blue-600 hover:bg-blue-700 text-white font-black px-5 py-2.5 rounded-xl shadow-md flex items-center gap-2 text-base md:text-lg">
+            Далі <i class="fa-solid fa-chevron-right"></i>
+        </button>
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+        const totalSlides = 5;
+        const taskNumbers = ["1–3", "4 (частина 1)", "4 (частина 2)", "5–6", "7.1–7.4*"];
+
+        function goToSlide(index) {
+            if (index < 0 || index >= totalSlides) return;
+            
+            document.querySelectorAll('.slide-page').forEach(el => {
+                el.classList.add('hidden');
+            });
+            const activeSlide = document.getElementById(`slide-${index}`);
+            activeSlide.classList.remove('hidden');
+            
+            // Прокрутка вгору при переході на нову сторінку
+            const scrollContainer = activeSlide.querySelector('.overflow-y-auto');
+            if (scrollContainer) scrollContainer.scrollTop = 0;
+
+            currentSlide = index;
+            document.getElementById('current-task-num').innerText = taskNumbers[currentSlide];
+
+            // Оновлення індикаторів кроків
+            document.querySelectorAll('.step-dot').forEach((btn, idx) => {
+                if (idx === currentSlide) {
+                    btn.className = 'step-dot px-3 py-1.5 rounded-lg font-black text-sm md:text-base bg-blue-600 text-white shadow-sm transition';
+                } else {
+                    btn.className = 'step-dot px-3 py-1.5 rounded-lg font-bold text-sm md:text-base bg-slate-100 text-slate-700 hover:bg-slate-200 transition';
+                }
+            });
+
+            // Керування станом кнопок Назад / Далі
+            const btnPrev = document.getElementById('btn-prev');
+            btnPrev.disabled = (currentSlide === 0);
+            btnPrev.style.opacity = (currentSlide === 0) ? "0.4" : "1";
+            
+            const btnNext = document.getElementById('btn-next');
+            if (currentSlide === totalSlides - 1) {
+                btnNext.innerHTML = 'На початок <i class="fa-solid fa-rotate-left ml-1"></i>';
+                btnNext.className = 'btn-nav bg-emerald-600 hover:bg-emerald-700 text-white font-black px-5 py-2.5 rounded-xl shadow-md flex items-center gap-2 text-base md:text-lg';
+            } else {
+                btnNext.innerHTML = 'Далі <i class="fa-solid fa-chevron-right"></i>';
+                btnNext.className = 'btn-nav bg-blue-600 hover:bg-blue-700 text-white font-black px-5 py-2.5 rounded-xl shadow-md flex items-center gap-2 text-base md:text-lg';
+            }
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                goToSlide(currentSlide + 1);
+            } else {
+                goToSlide(0);
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                goToSlide(currentSlide - 1);
+            }
+        }
+
+        function toggleHint(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.classList.toggle('hidden');
+            }
+        }
+
+        function checkChoice(btn, isCorrect, feedbackId) {
+            const parent = btn.parentElement;
+            parent.querySelectorAll('button').forEach(b => {
+                b.classList.remove('bg-emerald-100', 'border-emerald-500', 'bg-rose-100', 'border-rose-500');
+                b.classList.add('bg-white', 'border-slate-300');
+            });
+            btn.classList.remove('bg-white', 'border-slate-300');
+            if (isCorrect) {
+                btn.classList.add('bg-emerald-100', 'border-emerald-500');
+                const fb = document.getElementById(feedbackId);
+                if (fb) fb.classList.remove('hidden');
+            } else {
+                btn.classList.add('bg-rose-100', 'border-rose-500');
+            }
+        }
+
+        // Навігація клавішами стрілок (якщо фокус не в полі введення)
+        document.addEventListener('keydown', function(e) {
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+            if (e.key === 'ArrowRight') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+
+        window.onload = function() {
+            goToSlide(0);
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false}
+                ],
+                throwOnError: false
+            });
+        }
+    </script>
+</body>
+</html>
